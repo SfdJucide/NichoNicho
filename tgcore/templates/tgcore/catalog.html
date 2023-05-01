@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>Каталог</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="inner">
+			{% for product in products %}
+				<div class="item">
+					<div class="itc-slider" data-autoplay="true" data-interval="7000" data-loop="true" data-slider="itc-slider">
+						<div class="itc-slider__wrapper">
+							<div class="itc-slider__items">
+								{% for img in product.images.all %}
+									<div class="itc-slider__item">
+										<img src="{{ img.image.url }}" alt="NOT-FOUND" class="img">
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+						<!-- <button class="itc-slider__btn itc-slider__btn_prev"></button>
+						<button class="itc-slider__btn itc-slider__btn_next"></button> -->
+						<!-- <ol class="itc-slider__indicators">
+							{% for img in product.images.all %}
+								<li class="itc-slider__indicator" data-slide-to="0"></li>
+							{% endfor %}
+						</ol> -->
+					</div>
+					<!-- <img src="1.webp" alt="Burger" class="img"> -->
+					<div class="product_name" id="product_name1">{{ product.name }}</div>
+					<details>
+						<summary>Подробнее</summary>
+						{{ product.short_description|safe }}
+						<!-- <p class="desc-p" style="font-weight: bold;">Состав</p>
+						<p class="desc-p">Sucrose, Glycerin, Sorbitol, Cocos Nucifera Fruit Juice, Acrylates Copolymer, Olea Europaea Fruit Oil, Prunus Amygdalus Dulcis Oil, Vanilla Planifolia Bean Extract, Phenoxyethanol, Fragrance.</p>
+						<p class="desc-p" style="font-weight: bold;">Способ применения</p>
+						<p class="desc-p">Перед применением очистите кожу тёплой водой с мочалкой. Еще лучше немного распариться в душе или бане.</p>
+						<p class="desc-p">Для более качественного отшелушивания скраб наносите на всё тело круговыми движениями — то по часовой стрелке, то против. Особенно тщательно проработайте кожу на локтях, коленях и пятки. </p>
+						<p class="desc-p">Смойте скраб тёплой водой. Улучшить эффект можно, если смывать попеременно тёплой и прохладной водой, заканчивая ополаскивание прохладной. Затем нанесите на кожу увлажняющий крем.</p> -->
+					</details>
+					<form action="https://www.ozon.ru/product/skrab-dlya-tela-saharnyy-nicho-nicho-vanil-s-naturalnym-sokom-kokosa-antitsellyulitnyy-801944590" target="_blank">
+						<button class="btn" id="btn1">Купить</button>
+					</form>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<!-- <div class="usercard" id="usercard"></div> -->
+	
+
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

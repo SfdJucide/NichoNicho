@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<title>Обратная связь</title>
+</head>
+<body>
+
+	<div class="container">
+		<div class="inner">
+			<form class="question_form" id="question_form" action="{% url 'tgcore:feedback' %}" method="post">
+				{% csrf_token %}
+				<h3 class="title">{{ title }}</h3>
+				{{ form.user }}
+				{{ form.message }}
+				<button class="btn" type="submit">Отправить</button>
+			</form> 
+		</div>
+	</div>
+
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	<script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>
